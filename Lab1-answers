@@ -25,10 +25,9 @@
 
     Q3: What is the difference between spot instances and reserved instances?
     
-    "On-Demand" instances allow the user to use the compute by hour without requiring long term commitment. 
-    There are no guarantees that  the user will always be able to launch specific instance types in an availability zone, though AWS tries it's best to meet the needs.
-    This service is preferable for POCs and they do not suffer an interruption of the service(by AWS) like Spot instances.
-    "Spot" instances are a bid_for_low_price version of On-Demand instances, but could be shut down by AWS anytime the Spot instance price goes higher than bid price. 
+    Reserved instances allow the user to use the compute by hour without requiring long term commitment. 
+    Spot instances are a bid_for_low_price version of reserved instances, but could be shut down by AWS anytime the Spot instance price 
+    goes higher than bid price. 
     Spot price fluctuates based on the supply and demand of the capacity. 
     It's essentially the leftover capacity of AWS to be used. 
 
