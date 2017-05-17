@@ -14,7 +14,8 @@
     Each object (file) in the storage contains a header with associated sequence of bytes from 0 byte to 5 TB.
     Objects in Amazon S3 are associated with a unique identifier (key), so access to them can be obtained through web requests from anywhere.
     
-    As compared to Amazon EBS, the process of requesting an object in Amazon S3 is slower, but Amazon S3 is a highly scalable storage service with 99,999999999% data durability.
+    As compared to Amazon EBS, the process of requesting an object in Amazon S3 is slower, but Amazon S3 is a highly scalable storage service with almost 100%
+    data durability.
     It means that there are very little chances to lose data or reach maximum storage capacity.
     Thus, it’s better to use it to store and deliver objects that don’t require a lot of read/write operations, for example, backups
     
