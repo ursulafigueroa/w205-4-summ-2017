@@ -1,0 +1,28 @@
+##Submissions:
+
+    Provide a screenshot of the running UCB AMI that shows you have successfully launched an EC2 instance using the UCB AMI (ISVC).
+    
+    Provide the answers to the following questions in a file called Lab1-answers.txt
+
+    Q1: What is the difference between EBS and S3?
+    
+    Amazon S3 and Amazon EBS are different types of storage. Amazon S3 is a web services interface that can be used to store and retrieve 
+    any amount of data from anywhere to the web, while Amazon EBS is a block level storage, which is only accessible to EC2 instances (One instance may access more than one EBS).
+    
+    As compared to Amazon EBS, the process of requesting an object in Amazon S3 is slower, but it is a highly scalable storage service.
+    There are very little chances to lose data or reach maximum storage capacity. It’s better to use it to store and deliver objects
+    that don’t require a lot of read/write operations, like backups. Amazon EBS stores data as blocks of the same size and organizes them 
+    through the hierarchy similar to a traditional file system. 
+     
+    Q2: When would you consider a cloud infrastructure for your data science tasks?
+    When working in collaborative environments and if available computing resources are not enough.
+
+    Q3: What is the difference between spot instances and reserved instances?
+    
+    Reserved instances allow the user to use the compute by hour without requiring long term commitment. 
+    Spot instances are a bid for low price version of reserved instances, but could be shut down by AWS anytime the Spot instance price 
+    goes higher than bid price. 
+    Spot price fluctuates based on the supply and demand of the capacity. 
+    It's essentially the leftover capacity of AWS to be used. 
+
+Q4: List the names of four software packages installed on the UCB AMI
