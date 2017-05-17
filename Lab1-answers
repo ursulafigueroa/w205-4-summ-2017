@@ -2,14 +2,34 @@
 
     Provide a screenshot of the running UCB AMI that shows you have successfully launched an EC2 instance using the UCB AMI.
     
-    
-
     Provide the answers to the following questions in a file called Lab1-answers.txt
 
     Q1: What is the difference between EBS and S3?
-
+    
+    Amazon S3 and Amazon EBS are different types of storage.
+    
+    Amazon S3 is an object storage for data that deals with flat file structure, while Amazon EBS is a block level storage.
+    
+    Amazon S3 stores data as objects in a flat environment (without a hierarchy).
+    Each object (file) in the storage contains a header with associated sequence of bytes from 0 byte to 5 TB.
+    Objects in Amazon S3 are associated with a unique identifier (key), so access to them can be obtained through web requests from anywhere.
+    
+    As compared to Amazon EBS, the process of requesting an object in Amazon S3 is slower, but Amazon S3 is a highly scalable storage service with 99,999999999% data durability.
+    It means that there are very little chances to lose data or reach maximum storage capacity.
+    Thus, it’s better to use it to store and deliver objects that don’t require a lot of read/write operations, for example, backups
+    
+    Amazon EBS stores data as blocks of the same size and organizes them through the hierarchy similar to a traditional file system. 
+    EBS is not a standalone storage service like Amazon S3 so it can be used only in combination with Amazon EC2.
+   
     Q2: When would you consider a cloud infrastructure for your data science tasks?
 
     Q3: What is the difference between spot instances and reserved instances?
+    
+    "On-Demand" instances allow the user to use the compute by hour without requiring long term commitment. 
+    There are no guarantees that  the user will always be able to launch specific instance types in an availability zone, though AWS tries it's best to meet the needs.
+    This service is preferable for POCs and they do not suffer an interruption of the service(by AWS) like Spot instances.
+    "Spot" instances are a bid_for_low_price version of On-Demand instances, but could be shut down by AWS anytime the Spot instance price goes higher than bid price. 
+    Spot price fluctuates based on the supply and demand of the capacity. 
+    It's essentially the leftover capacity of AWS to be used. 
 
     Q4: List the names of four software packages installed on the UCB AMI
