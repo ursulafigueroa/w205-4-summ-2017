@@ -1,0 +1,5 @@
+Q1: How many live datanodes are there? 1
+
+Q2: How much non-DFS storage is used? Non DFS Used: 5473923072 (5.10 GB)
+
+Q3: How much DFS storage is used? DFS Used: 143515648 (136.87 MB), DFS Used%: 0.14%
