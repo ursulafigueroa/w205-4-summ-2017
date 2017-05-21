@@ -1,0 +1,13 @@
+##Submissions:
+
+    List the HDFS contents of /user
+
+    Inspect the output of the HDFS admin report and answer the following questions in a text file.
+
+-To generate this, exit from the w205 user and type: sudo -u hdfs hdfs dfsadmin -report
+
+Q1: How many live datanodes are there?
+
+Q2: How much non-DFS storage is used?
+
+Q3: How much DFS storage is used?
