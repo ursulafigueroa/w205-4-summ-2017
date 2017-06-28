@@ -1,1 +1,66 @@
 Lab5 answers
+
+
+Question 1: What is the output of \dt?
+              List of relations
+ Schema |       Name       | Type  |  Owner
+--------+------------------+-------+----------
+ public | actor            | table | postgres
+ public | address          | table | postgres
+ public | category         | table | postgres
+ public | city             | table | postgres
+ public | country          | table | postgres
+ public | customer         | table | postgres
+ public | film             | table | postgres
+ public | film_actor       | table | postgres
+ public | film_category    | table | postgres
+ public | inventory        | table | postgres
+ public | language         | table | postgres
+ public | payment          | table | postgres
+ public | payment_p2007_01 | table | postgres
+ public | payment_p2007_02 | table | postgres
+ public | payment_p2007_03 | table | postgres
+ public | payment_p2007_04 | table | postgres
+ public | payment_p2007_05 | table | postgres
+ public | payment_p2007_06 | table | postgres
+ public | rental           | table | postgres
+ public | staff            | table | postgres
+ public | store            | table | postgres
+(21 rows)
+
+
+Question 2: What is the schema for the customer table?
+dvdrental=# \d customer
+                                          Table "public.customer"
+   Column    |            Type             |                           Modifiers
+
+-------------+-----------------------------+-------------------------------------------------------------
+---
+ customer_id | integer                     | not null default nextval('customer_customer_id_seq'::regclas
+s)
+ store_id    | smallint                    | not null
+ first_name  | character varying(45)       | not null
+ last_name   | character varying(45)       | not null
+ email       | character varying(50)       |
+ address_id  | smallint                    | not null
+ activebool  | boolean                     | not null default true
+ create_date | date                        | not null default ('now'::text)::date
+ last_update | timestamp without time zone | default now()
+ active      | integer                     |
+    
+
+Question 3: What similarities do you see in the explain plains for these 3 queries?  
+
+To make the selection (filter), in all of them a Seq Scan is performed over the table where the query will be performed.
+
+Question 4: What is the difference between the plans for the Partitioned table and the union query?
+Why do you think this difference exists? In the first case two tables containing only 201701 and 201702 payments records are united.
+In the second case, a general payments table is filtered. From both customer_id and amount are displayed by customer_id.
+
+In total, the union query plan has one row less than the partition; with one more aggregation row (1 for each table),
+but one less Seq Scan and Filter, given that the partition runs a Seq scan for payment, payment2007_01 and payment2007_02.
+
+Question 5: What join algorithm is used for the inner join?
+
+Hash Join.
+
