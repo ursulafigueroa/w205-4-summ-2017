@@ -1,0 +1,28 @@
+(ns tweetcount
+  (:use [streamparse.specs])
+  (:gen-class))
+(defn tweetcount [options]
+  [
+    {"Sentences" (python-spout-spec
+      options
+      "spouts.sentences.Sentences"
+      ["sentence"]
+      )
+    }
+    {"ParseTweet" (python-bolt-spec
+      options
+      {"Sentences" :shuffle}
+      "bolts.parse.ParseTweet"
+      ["word"]
+      :p 2
+      )
+    "count-bolt" (python-bolt-spec
+      options
+      {"ParseTweet" ["word"]}
+      "bolts.tweetcounter.TweetCounter"
+      ["word" "count"]
+      :p 2
+      )
+    }
+  ]
+)
