@@ -1,0 +1,72 @@
+Submission 1
+
+How many rows are missing a value in the "State" column? Explain how you came up with the number.
+
+Text facet for the State attribute, scroll down to the end of State summary and found blank:5377
+
+Checking ZIP codes
+
+There 43,000 zip codes in the United States. The lowest zip code in US 00501. I transformed ZIP code using toNumber(value) 
+
+SUBMISSION 2:
+
+How many rows with missing ZIP codes do you have? 4362
+
+SUBMISSION 3:
+
+If you consider all ZIP codes less than 99999 to be valid, how many valid and invalid ZIP codes do you have, respectively? 
+Valid ZIP Codes:345175
+Invalid ZIP Codes: 39323
+
+SUBMISSION 4:
+
+Change the radius to 3.0. What happens? Do you want to merge any of the resulting matches?
+
+The pair of strings that are closer than 3.0 will be binned together. This means that the number of clusters will increase, given the radius is 
+
+higher and we will find more strings that belong or match in the same "group". For example, now we see together Indonesia and Micronesia.
+
+SUBMISSION 5:
+
+Change the block size to 2. Give two examples of new clusters that may be worth merging.
+
+There is one cluster for California, with a size of 4 and 87 rows, and there is another cluster for Alaska, with a size of 2 and 5 rows.
+
+SUBMISSION 6:
+
+Explain in words what happens when you cluster the "place" column, and why you think that happened. What additional functionality could 
+
+OpenRefine provide to possibly deal with the situation?
+
+Hint: you may want to cancel the run.
+
+
+Clustering takes a long time, I cancelled before it finished. This is because strings are much longer and comparing pairs of strings is a lot 
+
+more of work. There are n(n-1)/2 pairs of strings (and relative distances).
+
+Block chars help with this situation, performing a first pass over the sequence of strings to evaluate and obtain 'blocks', in which all 
+
+strings share a substring of the block size (block chars).
+
+Geolocation could be useful for this specific situation with places and locations.
+
+SUBMISSION 7:
+
+Submit a representation of the resulting matrix from the Levenshtein edit distance calculation. The resulting value should be correct.
+
+>>> distance("gumbarrel","gunbarell")
+3
+
+DISTANCE		1	2	3	4	5	6	7	8	9	10
+				G	U	M	B	A	R	R	E	L
+	1		0	1	2	3	4	5	6	7	8	9
+	2	G	1	0	1	3	4	5	6	7	8	9
+	3	U	2	2	0	1	2	3	4	5	6	7
+	4	N	3	3	1	1	2	3	4	5	6	7
+	5	B	4	4	2	2	1	2	3	4	5	6
+	6	A	5	5	3	3	2	1	2	3	4	5
+	7	R	6	6	4	4	3	2	1	2	3	4
+	8	E	7	7	5	5	4	3	2	2	2	3
+	9	L	8	8	6	6	5	4	3	3	3	2
+	10	L	9	9	7	7	6	5	4	4	4	3
