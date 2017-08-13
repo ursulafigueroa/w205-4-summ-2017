@@ -1,3 +1,8 @@
+DROP TABLE Care_Hospital
+DROP TABLE HCAHPS_Hospital
+DROP TABLE Care_State
+DROP TABLE HCAHPS_State
+
 CREATE EXTERNAL TABLE Care_Hospital (Provider_ID STRING, Hospital_Name STRING, Address STRING, City STRING, Hospital_State STRING, Zip_Code INT, County_Name STRING, Phone_Number INT, Patient_Condition STRING, Measure_ID STRING, Measure_Name STRING, Score STRING, Sample STRING, Footnote STRING, Measure_Start_Date DATE, Measure_End_Date DATE)
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
 WITH SERDEPROPERTIES (
