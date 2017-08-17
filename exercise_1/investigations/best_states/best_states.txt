@@ -1,0 +1,27 @@
+Best States
+
+DC      138.4915254237288       8171.0
+MD      115.16176470588235      7831.0
+NY      115.77272727272727      7641.0
+CA      109.94202898550725      7586.0
+CT      114.39393939393939      7550.0
+DE      127.34745762711864      7513.5
+NM      115.36153846153846      7498.5
+NJ      112.67424242424242      7436.5
+NV      111.10606060606061      7333.0
+MA      108.21969696969697      7142.5
+
+From table Care_States_Transformed, this is a selection of 10 best sates accoding to their scores, obtained in first instance from Timely and Effective Care evaluations. Relevant fields Sate and it's avg score and sum of score. States are in descendant order according to the sum of scoreswith a limit of 10. 
+
+
+CREATE TABLE Best_States AS
+SELECT Hospital_State,
+AVG (Score) AS State_Score_AVG, 
+SUM (Score) AS State_Score_Sum
+FROM Care_State_Transformed
+GROUP BY Hospital_State
+ORDER BY State_Score_Sum DESC LIMIT 10; 
+
+SELECT Hospital_State, State_Score_AVG, State_Score_Sum
+FROM Best_States
+ORDER BY State_Score_Sum DESC LIMIT 10;
