@@ -1,0 +1,29 @@
+Hospital Variability
+
+
+ED_1b   ED1     271.6069397042093       954970.0        92.83178787038688
+ED_2b   ED2     98.51859267734554       344421.0        62.1666505939829
+OP_18b  OP 18   142.76739325171692      478128.0        40.70077322337158
+OP_3b   Median Time to Transfer to Another Facility for Acute Coronary Intervention     60.74572127139  364     24845.0 29.479326601050527
+STK_4   Thrombolytic Therapy    82.90045766590389       72455.0 21.954194561164023
+OP_23   Head CT results 66.71324296141815       63978.0 21.844653491103774
+AMI_7a  Fibrinolytic Therapy Received Within 30 Minutes Of Hospital Arrival     50.0    150.0   18.779  4213613377
+OP_2    Fibrinolytic Therapy Received Within 30 Minutes of ED Arrival   70.25   4777.0  18.04844379799  5763
+OP_21   Median time to pain med 55.35687263556116       175592.0        17.722358013930915
+OP_20   Door to diagnostic eval 28.081991651759093      94187.0 16.882052975576602
+
+Originally from table Care_Hospital, standard deviation of each procedure scores is calculated and put in desdendant order, with a limit of 10. Then the table hospital_variability is created to keep 3 main resulst(avg,sum and stdev). 
+
+
+CREATE TABLE hospital_variability AS
+SELECT Measure_ID, Measure_Name, 
+AVG (Score) AS Procedure_Score_AVG, 
+SUM (Score) AS Procedure_Score_Sum,
+STDDEV (Score) AS Procedure_Score_STDEV
+FROM Scores_Procedure_Transformed
+GROUP BY Measure_ID, Measure_Name
+ORDER BY Procedure_Score_STDEV DESC LIMIT 10;
+
+SELECT Measure_ID, Measure_Name, Procedure_Score_AVG, Procedure_Score_Sum, Procedure_Score_STDEV
+FROM hospital_variability
+ORDER BY Procedure_Score_STDEV DESC LIMIT 10;
