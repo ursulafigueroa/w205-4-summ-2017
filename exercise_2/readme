@@ -1,1 +1,7 @@
-
+For running twitter stream sparse application:
+1.- Inside extweetwordcount folder, run the storm streamparse:
+$sparse run
+2.- Run finalresults.py to return the total count of every word in the stream, or a given word.
+$python finalresults.py
+3.- Run histogram.py to find the total number of occurrences greater than or equal to a first number, and less than or equal to another number.
+$python histogram.py
